@@ -1,0 +1,104 @@
+{
+	"obs.timer_add": {
+		"body": "obs.timer_add(${1:callback}, ${2:milliseconds})",
+		"description": "Adds an timer callback which triggers every millseconds.\n\nParameters:\ncallback - callback function\nmilliseconds - milliseconds between calls",
+		"prefix": "obs.timer_add(...)",
+		"scope": "python"
+	},
+	"obs.timer_remove": {
+		"body": "obs.timer_remove(${1:callback})",
+		"description": "Removes a timer callback.\n\nParameters:\ncallback - callback function",
+		"prefix": "obs.timer_remove(...)",
+		"scope": "python"
+	},
+	"script_path": {
+		"body": "script_path()",
+		"description": "The path to the script.\n\nThis is a function you can use to get the current script's path. This function is automatically implemented in to each script before the script is loaded, and is part of the script's namespace, not obspython's",
+		"prefix": "script_path(...)",
+		"scope": "python"
+	},
+	"obs.obs_enum_sources": {
+		"body": "obs.obs_enum_sources()",
+		"description": "Enumerates all sources.\n\nReturns:\nAn array of reference-incremented sources. Release with source_list_release().",
+		"prefix": "obs.obs_enum_sources()",
+		"scope": "python"
+	},
+	"obs.obs_scene_enum_items": {
+		"body": "obs.obs_scene_enum_items(${1:scene})",
+		"description": "Enumerates scene items within a scene.\n\nParameters:\nscene – obs_scene_t object to enumerate items from.\n\nReturns:\nList of scene items. Release with sceneitem_list_release().",
+		"prefix": "obs.obs_scene_enum_items()",
+		"scope": "python"
+	},
+	"obs.signal_handler_connect": {
+		"body": "obs.signal_handler_connect(${1:handler}, ${2:signal}, ${3:callback})",
+		"description": "Adds a callback to a specific signal on a signal handler. This callback has one parameter: the calldata_t object.\n\nParameters:\nhandler – A signal_handler_t object.\nsignal – The signal on the signal handler (string)\ncallback – The callback to connect to the signal. Use signal_handler_disconnect() or remove_current_callback() to remove the callback.",
+		"prefix": "obs.signal_handler_connect(...)",
+		"scope": "python"
+	},
+	"obs.signal_handler_disconnect": {
+		"body": "obs.signal_handler_disconnect(${1:handler}, ${2:signal}, ${3:callback})",
+		"description": "Removes a callback from a specific signal of a signal handler.\n\nParameters:\nhandler – A signal_handler_t object.\nsignal – The signal on the signal handler (string)\ncallback – The callback to disconnect from the signal.",
+		"prefix": "obs.signal_handler_disconnect(...)",
+		"scope": "python"
+	},
+	"obs.signal_handler_connect_global": {
+		"body": "obs.signal_handler_connect_global(${1:handler}, ${2:callback})",
+		"description": "Adds a global callback to a signal handler. This callback has two parameters: the first parameter is the signal string, and the second parameter is the calldata_t object.\n\nParameters:\nhandler – A signal_handler_t object.\ncallback – The callback to connect. Use signal_handler_disconnect_global() or remove_current_callback() to remove the callback.",
+		"prefix": "obs.signal_handler_connect_global(...)",
+		"scope": "python"
+	},
+	"obs.signal_handler_disconnect_global": {
+		"body": "obs.signal_handler_disconnect_global(${1:handler}, ${2:callback})",
+		"description": "Removes a global callback from a signal handler.\n\nParameters:\nhandler – A signal_handler_t object.\ncallback – The callback to disconnect.",
+		"prefix": "obs.signal_handler_disconnect_global(...)",
+		"scope": "python"
+	},
+	"obs.obs_hotkey_register_frontend": {
+		"body": "obs.obs_hotkey_register_frontend(${1:name}, ${2:description}, ${3:callback})",
+		"description": "Adds a frontend hotkey. The callback takes one parameter: a boolean ‘pressed’ parameter.\n\nParameters:\nname – Unique name identifier string of the hotkey.\ndescription – Hotkey description shown to the user.\ncallback – Callback for the hotkey. Use obs_hotkey_unregister() or remove_current_callback() to remove the callback.",
+		"prefix": "obs.obs_hotkey_register_frontend(...)",
+		"scope": "python"
+	},
+	"obs.obs_hotkey_unregister": {
+		"body": "obs.obs_hotkey_unregister(${1:callback})",
+		"description": "Unregisters the hotkey associated with the specified callback.\n\nParameters:\ncallback – Callback of the hotkey to unregister.",
+		"prefix": "obs.obs_hotkey_unregister(...)",
+		"scope": "python"
+	},
+	"obs.obs_properties_add_button": {
+		"body": "obs.obs_properties_add_button(${1:properties}, ${2:setting_name}, ${3:text}, ${4:callback})",
+		"description": "Adds a button property to an obs_properties_t object. The callback takes two parameters: the first parameter is the obs_properties_t object, and the second parameter is the obs_property_t for the button.\n\nParameters:\nproperties – An obs_properties_t object.\nsetting_name – A setting identifier string.\ntext – Button text.\ncallback – Button callback. This callback is automatically cleaned up.",
+		"prefix": "obs.obs_properties_add_button(...)",
+		"scope": "python"
+	},
+	"obs.remove_current_callback": {
+		"body": "obs.remove_current_callback()",
+		"description": "Removes the current callback being executed. Does nothing if not within a callback.",
+		"prefix": "obs.remove_current_callback(...)",
+		"scope": "python"
+	},
+	"obs.source_list_release": {
+		"body": "obs.source_list_release(${1:source_list})",
+		"description": "Releases the references of a source list.\n\nParameters:\nsource_list – Array of sources to release.",
+		"prefix": "obs.source_list_release(...)",
+		"scope": "python"
+	},
+	"obs.sceneitem_list_release": {
+		"body": "obs.sceneitem_list_release(${1:item_list})",
+		"description": "Releases the references of a scene item list.\n\nParameters:\nitem_list – Array of scene items to release.",
+		"prefix": "obs.sceneitem_list_release(...)",
+		"scope": "python"
+	},
+	"obs.calldata_source": {
+		"body": "obs.calldata_source(${1:calldata}, ${2:name})",
+		"description": "Casts a pointer parameter of a calldata_t object to an obs_source_t object.\n\nParameters:\ncalldata – A calldata_t object.name – Name of the parameter.\n\nReturns:\nA borrowed reference to an obs_source_t object.",
+		"prefix": "obs.calldata_source(...)",
+		"scope": "python"
+	},
+	"obs.calldata_sceneitem": {
+		"body": "obs.calldata_sceneitem(${1:calldata}, ${2:name})",
+		"description": "Casts a pointer parameter of a calldata_t object to an obs_sceneitem_t object.\n\nParameters:\ncalldata – A calldata_t object.\nname – Name of the parameter.\n\nReturns:\nA borrowed reference to an obs_sceneitem_t object.",
+		"prefix": "obs.calldata_sceneitem(...)",
+		"scope": "python"
+	}
+}
