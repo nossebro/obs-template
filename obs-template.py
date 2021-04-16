@@ -13,23 +13,22 @@ __website__ = "https://github.com/nossebro/obs-template"
 def script_description():
     """Function expected to return a character string containing the description of the script."""
 
-    filename = None
     desc = "<!doctype html>\n\n<html lang=\"en\">\n<body>\n"
-    for x in ["{}.md".format(__name__), "README.md"]:
-        if x in os.listdir(script_path()):
-            filename = x
-            break
+    filename = next((x for x in ["{}.md".format(
+        __name__), "README.md"] if x in os.listdir(script_path())), None)
     if filename:
-        with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), filename), "r", encoding="utf-8") as f:
+        with open(os.path.join(script_path(), filename), "r", encoding="utf-8") as f:
             try:
-                desc += markdown.markdown(f.read(), extensions=['tables'])
-            except:
-                pass
+                desc += markdown.markdown(f.read(), extensions=["tables"])
+            except Exception as e:
+                print(e)
         f.close()
     desc += "\n<h2>Script Information</h2>\n<p>\n<table width=\"90%\">\n<tbody>\n"
-    for x in ["__version__", "__author__", "__website__"]:
+    for x in ["__version__", "__author__"]:
         desc += "<tr>\n<td>{}:</td>\n<td>{}</td>\n</tr>\n".format(
             x.replace("__", "").title(), eval(x))
+    desc += "<tr>\n<td>{0}:</td>\n<td><a href=\"{1}\">{1}</a></td>\n</tr>\n".format(
+        "Website", __website__)
     desc += "</tbody>\n</table>\n</p>\n</body>\n</html>\n"
     return desc
 
